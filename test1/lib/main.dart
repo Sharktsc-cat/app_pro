@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 
 const ink = Color(0xFF17243B);
 const muted = Color(0xFF738096);
@@ -6,7 +7,15 @@ const canvas = Color(0xFFF4F6FA);
 const lime = Color(0xFFC9F36A);
 const green = Color(0xFF267B5C);
 
-void main() => runApp(const MooveApp());
+Future<void> main() async {
+  WidgetsFlutterBinding.ensureInitialized();
+
+  await SystemChrome.setPreferredOrientations(
+    const [DeviceOrientation.portraitUp],
+  );
+
+  runApp(const MooveApp());
+}
 
 class MooveApp extends StatelessWidget {
   const MooveApp({super.key});
